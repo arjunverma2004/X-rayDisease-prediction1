@@ -5,6 +5,10 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 
+# IMPORTANT: Ensure TensorFlow behavior is consistent for prediction
+# This line is added for robustness, although the code ran fine without it.
+tf.compat.v1.enable_v2_tensorshape() 
+
 # --- Configuration matching your notebook ---
 IMAGE_SIZE = (320, 320) 
 LABELS = [
@@ -65,6 +69,8 @@ def process_and_predict(uploaded_file, model):
 # --- Custom Styling for Results ---
 def color_significant(val):
     """Adds background color for probabilities above the threshold."""
+    # Use the global THRESHOLD variable
+    global THRESHOLD 
     if isinstance(val, float):
         if val >= THRESHOLD:
             # High probability (e.g., Red/Orange tone)
@@ -117,7 +123,9 @@ def main():
             # Column 1: Image Display
             with col1:
                 st.header("Uploaded Image")
-                st.image(image, caption='Processed Image', use_column_width=True)
+                # Resize the displayed image using PIL before showing it to save on memory
+                display_image = image.resize((400, int(image.height * 400 / image.width)))
+                st.image(display_image, caption='Processed Image', use_column_width=True)
                 
             # Column 2: Prediction Results
             with col2:
@@ -160,8 +168,8 @@ def main():
             to start the automated classification process.
             """
         )
-        # You could add a placeholder image here for a professional look
-        # st.image("placeholder_xray.png", caption="Example Image Slot")
+        
+
 
 if __name__ == "__main__":
     main()
