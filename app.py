@@ -18,7 +18,7 @@ LABELS = [
     'Pneumonia', 'Pneumothorax', 'Support Devices'
 ]
 
-MODEL_PATH = 'grand_slam_best_model.keras'
+MODEL_PATH = 'models/grand_slam_best_model.keras'
 THRESHOLD = 0.5 # Threshold for highlighting significant findings
 
 # --- Functions ---
