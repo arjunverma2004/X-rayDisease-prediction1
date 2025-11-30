@@ -73,18 +73,18 @@ Pneumonia, Pneumothorax, Support Devices
 ```bash
 git clone [YOUR_REPO_URL]
 cd [YOUR_REPO_NAME]
+```
 
+**2. Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
+*(Note: The requirements file should include `tensorflow` and `streamlit`.)*
 
-2.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-    *(Note: The requirements file should include `tensorflow` and `streamlit`.)*
-
-3.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
+**3. Run the Streamlit application:**
+```bash
+streamlit run app.py
+```
 
 The application will automatically open in your web browser, typically at `http://localhost:8501`.
 
